@@ -31,7 +31,7 @@ MathJax = {
     //load: ['[tex]/noerrors', '[tex]/require', 'xyjax' ]
     //load: ['[tex]/noerrors', 'xyjax' ]
     //load: ['[tex]/noerrors', '[tex]/amscd', '[custom]/xypic.js']
-    //load: ['[tex]/noerrors', '[custom]/xypic.js']
+    load: ['[tex]/noerrors', '[custom]/xypic.js']
   },
 
   startup: {
