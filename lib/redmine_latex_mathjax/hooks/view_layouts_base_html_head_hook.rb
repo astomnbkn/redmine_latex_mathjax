@@ -3,8 +3,6 @@ module RedmineLatexMathjax
     class ViewLayoutsBaseHtmlHeadHook < Redmine::Hook::ViewListener
       def view_layouts_base_html_head(context={})
           return "<script>
-  MathJax = {
-<script>
 MathJax = {
   options: {
     ignoreHtmlClass: 'tex2jax_ignore',
@@ -15,15 +13,18 @@ MathJax = {
       color: [],
       colorV2: ['color']
     },
-    packages: {'[+]': ['noerrors']},
+    packages: {'[+]': ['noerrors', 'require']},
     inlineMath: [ ['" + MathJaxEmbedMacro.delimiterStartInline.html_safe + "','" + MathJaxEmbedMacro.delimiterEndInline.html_safe + "'], ['\\\\(', '\\\\)'] ],
   },
   loader: {
-    load: ['[tex]/noerrors']
+    source: {
+      'xyjax': \"http://sonoisa.github.io/xyjax_ext/xypic.js\"
+    },
+    load: ['[tex]/noerrors', '[tex]/require', 'xyjax' ]
   },
   startup: {
     ready: () => {
-      console.log('MathJax is loaded, but not yet initialized');
+      console.log('NEW 4: MathJax is loaded, but not yet initialized');
       MathJax.startup.defaultReady();
       console.log('MathJax is initialized, and the initial typeset is queued');
     }
