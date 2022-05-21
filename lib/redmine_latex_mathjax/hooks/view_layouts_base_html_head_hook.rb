@@ -11,22 +11,30 @@ MathJax = {
   tex: {
     autoload: {
       color: [],
-      colorV2: ['color']
+      colorv2: ['color']
     },
-    packages: {'[+]': ['noerrors', 'require']},
+    //packages: {'[+]': ['noerrors', 'require']},
+    packages: {'[+]': ['noerrors']},
     inlineMath: [ ['" + MathJaxEmbedMacro.delimiterStartInline.html_safe + "','" + MathJaxEmbedMacro.delimiterEndInline.html_safe + "'], ['\\\\(', '\\\\)'] ],
+    displayMath: [             // start/end delimiter pairs for display math
+      ['$$', '$$'], ['\\[', '\\]']
+    ],
   },
   loader: {
-    source: {
-      'xyjax': \"http://sonoisa.github.io/xyjax_ext/xypic.js\"
-    },
-    load: ['[tex]/noerrors', '[tex]/require', 'xyjax' ]
+    //source: {
+    //  'xyjax': \"http://sonoisa.github.io/xyjax_ext/xypic.js\"
+    //},
+    //load: ['[tex]/noerrors', '[tex]/require', 'xyjax' ]
+    load: ['[tex]/noerrors'],
   },
   startup: {
     ready: () => {
       console.log('NEW 4: MathJax is loaded, but not yet initialized');
       MathJax.startup.defaultReady();
       console.log('MathJax is initialized, and the initial typeset is queued');
+      MathJax.startup.promise.then(() => {
+        console.log('MathJax initial typesetting complete');
+      });
     }
   }
   };
