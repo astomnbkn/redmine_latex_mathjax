@@ -11,7 +11,7 @@ MathJax = {
   tex: {
     autoload: {
       color: [],
-      colorv2: ['color']
+      colorV2: ['color']
     },
     //packages: {'[+]': ['noerrors', 'require']},
     packages: {'[+]': ['noerrors']},
@@ -27,9 +27,45 @@ MathJax = {
     //load: ['[tex]/noerrors', '[tex]/require', 'xyjax' ]
     load: ['[tex]/noerrors'],
   },
+
   startup: {
-    ready: () => {
-      console.log('NEW 4: MathJax is loaded, but not yet initialized');
+    //
+    //  Mapping of old extension names to new ones
+    //
+    requireMap: {
+      AMSmath: 'ams',
+      AMSsymbols: 'ams',
+      AMScd: 'amscd',
+      HTML: 'html',
+      noErrors: 'noerrors',
+      noUndefined: 'noundefined'
+    },
+    ready: function () {
+      //
+      //  Replace the require command map with a new one that checks for
+      //    renamed extensions and converts them to the new names.
+      //
+      var CommandMap = MathJax._.input.tex.SymbolMap.CommandMap;
+      var requireMap = MathJax.config.startup.requireMap;
+      var RequireLoad = MathJax._.input.tex.require.RequireConfiguration.RequireLoad;
+      var RequireMethods = {
+        Require: function (parser, name) {
+          var required = parser.GetArgument(name);
+          if (required.match(/[^_a-zA-Z0-9]/) || required === '') {
+            throw new TexError('BadPackageName', 'Argument for %1 is not a valid package name', name);
+          }
+          if (requireMap.hasOwnProperty(required)) {
+            required = requireMap[required];
+          }
+          RequireLoad(parser, required);
+        }
+      };
+      new CommandMap('require', {require: 'Require'}, RequireMethods);
+      //
+      //  Do the usual startup
+      //
+      //return MathJax.startup.defaultReady();
+      console.log('NEW 5: MathJax is loaded, but not yet initialized');
       MathJax.startup.defaultReady();
       console.log('MathJax is initialized, and the initial typeset is queued');
       MathJax.startup.promise.then(() => {
