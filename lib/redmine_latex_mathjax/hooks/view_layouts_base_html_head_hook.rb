@@ -13,19 +13,23 @@ MathJax = {
       color: [],
       colorV2: ['color']
     },
-    packages: {'[+]': ['noerrors']},
+    packages: {'[+]': ['noerrors', 'xypic']},
     inlineMath: [ ['" + MathJaxEmbedMacro.delimiterStartInline.html_safe + "','" + MathJaxEmbedMacro.delimiterEndInline.html_safe + "'], ['\\\\(', '\\\\)'] ],
     displayMath: [             // start/end delimiter pairs for display math
       ['$$', '$$'], ['\\[', '\\]']
     ],
   },
   loader: {
-    source: {
-      'xyjax': \"http://sonoisa.github.io/xyjax_ext/xypic.js\"
-    },
+    //source: {
+    //  'xyjax': 'http://sonoisa.github.io/xyjax_ext/xypic.js'
+    //},
+    paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+    //dependencies: {
+    //  'xyjax': ['[tex]/noerrors']
+    //},
     //load: ['[tex]/noerrors', '[tex]/require', 'xyjax' ]
-    load: ['[tex]/noerrors', 'xyjax' ]
-    //load: ['[tex]/noerrors'],
+    //load: ['[tex]/noerrors', 'xyjax' ]
+    load: ['[tex]/noerrors', '[custom]/xypic.js']
   },
 
   startup: {
