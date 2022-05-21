@@ -4,20 +4,34 @@ module RedmineLatexMathjax
       def view_layouts_base_html_head(context={})
           return "<script>
   MathJax = {
-    tex: {
-      inlineMath: [ ['" + MathJaxEmbedMacro.delimiterStartInline.html_safe + "','" + MathJaxEmbedMacro.delimiterEndInline.html_safe + "'], ['\\\\(', '\\\\)'] ]
+<script>
+MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  tex: {
+    autoload: {
+      color: [],
+      colorV2: ['color']
     },
-	startup: {
+    packages: {'[+]': ['noerrors']},
+    inlineMath: [ ['" + MathJaxEmbedMacro.delimiterStartInline.html_safe + "','" + MathJaxEmbedMacro.delimiterEndInline.html_safe + "'], ['\\\\(', '\\\\)'] ],
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  },
+  startup: {
     ready: () => {
       console.log('MathJax is loaded, but not yet initialized');
       MathJax.startup.defaultReady();
       console.log('MathJax is initialized, and the initial typeset is queued');
     }
-	}
+  }
   };
   //MathJax.typeset();
 </script>\n" +
-            javascript_include_tag(MathJaxEmbedMacro.URLToMathJax + '?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=onload') + "
+            javascript_include_tag(MathJaxEmbedMacro.URLToMathJax) + "
 <script type=\"text/javascript\">
   // Own submitPreview script with Mathjax trigger. Copy & Paste of public/javascripts/application.js
   function MJsubmitPreview(url, form, target) {
