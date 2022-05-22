@@ -11,7 +11,7 @@ MathJax = {
   tex: {
     autoload: {
       color: [],
-      colorV2: ['color']
+      colorv2: ['color']
     },
     //packages: {'[+]': ['noerrors', 'amscd', 'xypic']},
     packages: {'[+]': ['noerrors', 'xypic']},
