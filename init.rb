@@ -17,7 +17,7 @@ Redmine::Plugin.register :redmine_latex_mathjax do
     'latex_mathjax_inline_delimiter_end' => '$',
     'latex_mathjax_block_delimiter_start' => '$$',
     'latex_mathjax_block_delimiter_end' => '$$',
-    'latex_mathjax_html_css_config' => "availableFonts: ['TeX']\n"
+    'latex_mathjax_html_css_config' => "availableFonts: ['TeX']\n",
     'latex_mathjax_xyjax_url' => 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/xypic.js',
   }, :partial => 'redmine_latex_mathjax/settings'
 
