@@ -7,4 +7,5 @@ en:
   redmine_latex_mathjax_label_block_delimiter_start: "Block LaTeX opening delimiter:"
   redmine_latex_mathjax_label_block_delimiter_end: "Block LaTeX closing delimiter:"
   redmine_latex_mathjax_label_html_css_config: "MathJax HTML-CSS configuration:"
+  redmine_latex_mathjax_label_xyjax_url: "XYJax URL:"
   # my_label: "My label"
