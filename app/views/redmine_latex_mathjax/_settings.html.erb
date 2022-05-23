@@ -27,4 +27,8 @@
 <%= text_area_tag 'settings[latex_mathjax_html_css_config]', @settings['latex_mathjax_html_css_config'] %><br />
 </p>
 
+<p><label><%= l(:redmine_latex_mathjax_label_xyjax_url) %>:</label>
+<%= text_field_tag 'settings[latex_mathjax_xyjax_url]', @settings['latex_mathjax_xyjax_url'] %><br />
+</p>
+
 </fieldset>
