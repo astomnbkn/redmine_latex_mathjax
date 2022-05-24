@@ -19,9 +19,13 @@ MathJax = {
     },
     packages: {'[+]': ['noerrors', 'require', 'autoload']},
     packages: {'[-]': ['xypic', 'amscd']},
-    inlineMath: [ ['" + MathJaxEmbedMacro.delimiterStartInline.html_safe + "','" + MathJaxEmbedMacro.delimiterEndInline.html_safe + "'], ['\\\\(', '\\\\)'] ],
+    inlineMath: [
+      ['" + MathJaxEmbedMacro.delimiterStartInline.html_safe + "','" + MathJaxEmbedMacro.delimiterEndInline.html_safe + "'],
+      // ['\\\\(', '\\\\)']
+    ],
     displayMath: [             // start/end delimiter pairs for display math
-      ['$$', '$$'], ['\\[', '\\]']
+      ['" + MathJaxEmbedMacro.delimiterStartBlock.html_safe + "','" + MathJaxEmbedMacro.delimiterEndBlock.html_safe + "'],
+      //['\\\\[', '\\\\]']
     ],
   },
   loader: {
