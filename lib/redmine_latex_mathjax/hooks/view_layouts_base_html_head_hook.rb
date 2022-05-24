@@ -10,10 +10,12 @@ MathJax = {
   },
   tex: {
     autoload: {
+      // key: package name
+      // value: single array of macros, or two arrays of maxro names and environment names
       color: [],
       colorv2: ['color'],
       //amscd: [[], ['CD']],
-      //xypic: ['xy'],
+      xypic: [[], ['xy']],
     },
     packages: {'[+]': ['noerrors', 'require', 'autoload']},
     packages: {'[-]': ['xypic', 'amscd']},
