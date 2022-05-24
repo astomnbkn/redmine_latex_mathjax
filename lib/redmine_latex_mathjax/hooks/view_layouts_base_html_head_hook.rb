@@ -14,7 +14,7 @@ MathJax = {
       // value: single array of macros, or two arrays of maxro names and environment names
       color: [],
       colorv2: ['color'],
-      //amscd: [[], ['CD']],
+      amscd: [[], ['CD']],
       xypic: [[], ['xy']],
     },
     packages: {'[+]': ['noerrors', 'require', 'autoload']},
@@ -30,15 +30,14 @@ MathJax = {
   },
   loader: {
     source: {
-      //'xyjax': 'http://sonoisa.github.io/xyjax_ext/xypic.js'
       '[tex]/xypic': '" + MathJaxEmbedMacro.URLToXYJax + "',
     },
+    load: ['[tex]/noerrors', '[tex]/require', '[tex]/amscd', '[tex]/xypic']
     //paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'},
     //dependencies: {
     //  'xyjax': ['[tex]/noerrors']
     //},
     //load: ['[tex]/noerrors', '[tex]/amscd', '[custom]/xypic.js']
-    load: ['[tex]/noerrors', '[tex]/require', '[tex]/amscd', '[tex]/xypic']
   },
 
   startup: {
