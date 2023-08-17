@@ -10,26 +10,43 @@ MathJax = {
   },
   tex: {
     autoload: {
+      // key: package name
+      // value: single array of macros, or two arrays of maxro names and environment names
       color: [],
-      colorV2: ['color']
+      colorv2: ['color'],
+      amscd: [[], ['CD']],
+      xypic: [[], ['xy']],
     },
-    packages: {'[+]': ['noerrors', 'xypic']},
-    inlineMath: [ ['" + MathJaxEmbedMacro.delimiterStartInline.html_safe + "','" + MathJaxEmbedMacro.delimiterEndInline.html_safe + "'], ['\\\\(', '\\\\)'] ],
+    //packages: {'[+]': ['noerrors', 'amscd', 'xypic']},
+    packages: {'[+]': ['noerrors', 'require', 'autoload', 'ams', 'amscd']},
+    //packages: {'[-]': ['xypic', 'amscd']},
+    packages: {'[-]': ['xypic']},
+
+    // Combination used in production:
+    //packages: {'[+]': ['noerrors', 'require', 'autoload']},
+    //packages: {'[-]': ['xypic', 'amscd']},
+
+    inlineMath: [
+      ['" + MathJaxEmbedMacro.delimiterStartInline.html_safe + "','" + MathJaxEmbedMacro.delimiterEndInline.html_safe + "'],
+      // ['\\\\(', '\\\\)']
+    ],
     displayMath: [             // start/end delimiter pairs for display math
-      ['$$', '$$'], ['\\[', '\\]']
+      ['" + MathJaxEmbedMacro.delimiterStartBlock.html_safe + "','" + MathJaxEmbedMacro.delimiterEndBlock.html_safe + "'],
+      //['\\\\[', '\\\\]']
     ],
   },
   loader: {
-    //source: {
-    //  'xyjax': 'http://sonoisa.github.io/xyjax_ext/xypic.js'
-    //},
-    paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+    source: {
+      '[tex]/xypic': '" + MathJaxEmbedMacro.URLToXYJax + "',
+    },
+    //paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'},
     //dependencies: {
     //  'xyjax': ['[tex]/noerrors']
     //},
-    //load: ['[tex]/noerrors', '[tex]/require', 'xyjax' ]
-    //load: ['[tex]/noerrors', 'xyjax' ]
-    load: ['[tex]/noerrors', '[custom]/xypic.js']
+    //load: ['[tex]/noerrors', '[tex]/amscd', '[custom]/xypic.js']
+    //load: ['[tex]/noerrors', '[custom]/xypic.js']
+    //load: ['[tex]/noerrors', '" + MathJaxEmbedMacro.URLToXYJax + "']
+    load: ['[tex]/noerrors', '[tex]/require', '[tex]/ams', '[tex]/amscd', '[tex]/xypic']
   },
 
   startup: {
