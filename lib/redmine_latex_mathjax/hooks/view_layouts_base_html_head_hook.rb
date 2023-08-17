@@ -17,15 +17,14 @@ MathJax = {
       amscd: [[], ['CD']],
       xypic: [[], ['xy']],
     },
-    //packages: {'[+]': ['noerrors', 'amscd', 'xypic']},
-    packages: {'[+]': ['noerrors', 'require', 'autoload', 'ams', 'amscd']},
-    //packages: {'[-]': ['xypic', 'amscd']},
-    packages: {'[-]': ['xypic']},
+    // //packages: {'[+]': ['noerrors', 'amscd', 'xypic']},
+    // packages: {'[+]': ['noerrors', 'require', 'autoload', 'ams', 'amscd']},
+    // //packages: {'[-]': ['xypic', 'amscd']},
+    // packages: {'[-]': ['xypic']},
 
     // Combination used in production:
-    //packages: {'[+]': ['noerrors', 'require', 'autoload']},
-    //packages: {'[-]': ['xypic', 'amscd']},
-
+    packages: {'[+]': ['noerrors', 'require', 'autoload']},
+    packages: {'[-]': ['xypic', 'amscd']},
     inlineMath: [
       ['" + MathJaxEmbedMacro.delimiterStartInline.html_safe + "','" + MathJaxEmbedMacro.delimiterEndInline.html_safe + "'],
       // ['\\\\(', '\\\\)']
